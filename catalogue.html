@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogue Formations | Dolo Multi Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- STYLE CSS ---------- */
+    :root {
+      --dark: #0C1B33;
+      --gold: #E2B55C;
+      --cream: #F9F6F0;
+      --text-light: #4A5568;
+      --white: #FFFFFF;
+      --shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
+      --transition: all 0.25s ease;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--white);
+      color: var(--dark);
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    /* Header */
+    .header {
+      background: var(--white);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.96);
+    }
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: var(--dark);
+    }
+    .logo-icon {
+      background: var(--gold);
+      color: var(--dark);
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    .logo span:last-child {
+      color: var(--gold);
+    }
+    .nav-list {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-list a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--dark);
+      transition: var(--transition);
+    }
+    .nav-list a:hover, .nav-cta {
+      color: var(--gold);
+    }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--dark) !important;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .nav-list {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        padding: 32px;
+        transition: 0.3s;
+        box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+      }
+      .nav-list.active {
+        left: 0;
+      }
+      .nav-toggle {
+        display: block;
+      }
+    }
+    /* Hero */
+    .page-hero {
+      background: linear-gradient(120deg, #F8F4EA 0%, #FFFFFF 100%);
+      padding: 48px 0 32px;
+      border-bottom: 1px solid #EEE7DD;
+    }
+    .page-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+      color: var(--text-light);
+    }
+    .page-breadcrumb a {
+      text-decoration: none;
+      color: var(--text-light);
+    }
+    .page-breadcrumb svg {
+      width: 16px;
+      height: 16px;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .filter-btn {
+      background: transparent;
+      border: 1px solid #DDD2C0;
+      padding: 8px 24px;
+      border-radius: 40px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--dark);
+    }
+    .section {
+      padding: 64px 0;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 28px;
+    }
+    .card {
+      background: var(--white);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #F0E9DF;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.12);
+    }
+    .card-tag {
+      display: inline-block;
+      background: #F2E8DC;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--gold);
+      color: var(--dark);
+    }
+    .btn-sm {
+      padding: 10px 18px;
+      font-size: 0.9rem;
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      color: white;
+      gap: 12px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: white;
+      max-width: 550px;
+      width: 90%;
+      border-radius: 32px;
+      padding: 32px;
+      position: relative;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+    .close-modal {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .modal-actions {
+      display: flex;
+      gap: 16px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .footer {
+      background: var(--dark);
+      color: #DDD;
+      padding: 48px 0 24px;
+      margin-top: 40px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+    }
+    .footer-brand .logo {
+      color: white;
+      margin-bottom: 16px;
+    }
+    .footer-links-list {
+      list-style: none;
+    }
+    .footer-links-list li {
+      margin-bottom: 12px;
+    }
+    .footer-links-list a {
+      color: #DDD;
+      text-decoration: none;
+    }
+    .footer-bottom {
+      border-top: 1px solid #2a3a5a;
+      margin-top: 48px;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #25D366;
+      padding: 14px;
+      border-radius: 60px;
+      color: white;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      z-index: 99;
+    }
+    .whatsapp-float svg {
+      width: 28px;
+      height: 28px;
+    }
+    .icon {
+      width: 1.2em;
+      height: 1.2em;
+      vertical-align: middle;
+    }
+    .info-badge svg {
+      width: 1.1em;
+      height: 1.1em;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card {
+      animation: fadeUp 0.4s ease forwards;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-flex">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </span>
+        Dolo <span>Multi</span> Services
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <ul class="nav-list">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="formations.html">Formations</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="catalogue.html" class="nav-cta" aria-current="page">Catalogue →</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-breadcrumb">
+          <a href="index.html">Accueil</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          <a href="formations.html">Formations</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          Catalogue
+        </div>
+        <h1>Catalogue <em style="font-style:italic;color:#E2B55C">Interactif</em></h1>
+        <p>Filtrez par catégorie et cliquez sur « Voir les détails » pour accéder au programme complet, aux tarifs et à l'inscription.</p>
+
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">Tout afficher</button>
+          <button class="filter-btn" data-filter="bureautique">Bureautique</button>
+          <button class="filter-btn" data-filter="management">Management</button>
+          <button class="filter-btn" data-filter="digital">Digital</button>
+          <button class="filter-btn" data-filter="langues">Langues</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-3" id="catalog-grid" style="gap:28px">
+          <!-- Cards inserted by JS -->
+        </div>
+        <p id="empty-msg" style="display:none;text-align:center;color:var(--text-light);padding:48px 0;font-size:1.05rem">Aucune formation dans cette catégorie pour le moment.</p>
+      </div>
+    </section>
+
+    <!-- MODAL -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-content">
+        <button class="close-modal" aria-label="Fermer">&times;</button>
+        <div id="modal-body"></div>
+        <div class="modal-actions">
+          <a href="#" id="modal-cta" class="btn btn-whatsapp" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 0C5.373 0 .001 5.372.001 11.999c0 2.117.554 4.17 1.606 5.974L.012 24l6.179-1.621a11.956 11.956 0 0 0 5.808 1.499h.001C18.625 23.878 24 18.506 24 11.879 24 5.374 18.626.001 12 .001zm0 21.808a9.873 9.873 0 0 1-5.03-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.855 9.855 0 0 1 2.124 12C2.124 6.523 6.523 2.124 12 2.124c5.479 0 9.878 4.399 9.878 9.878 0 5.476-4.399 9.806-9.879 9.806z"/></svg>
+            S'inscrire via WhatsApp
+          </a>
+          <button class="btn btn-outline" onclick="closeModal()">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+            Dolo Multi Services
+          </a>
+          <p>Formation professionnelle certifiante à Bamako, Mali.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="formations.html">Formations</a></li>
+            <li><a href="catalogue.html">Catalogue</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-links-list">
+            <li><a href="tel:+22394510972">+22394510972</a></li>
+            <li><a href="mailto:contact@dolomultiservices.com">contact@dolomultiservices.com</a></li>
+            <li>Bamako, Mali</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Dolo Multi Services. Tous droits réservés.</p>
+        <div class="footer-legal">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="confidentialite.html">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/223XXXXXXXX" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 0C5.373 0 .001 5.372.001 11.999c0 2.117.554 4.17 1.606 5.974L.012 24l6.179-1.621a11.956 11.956 0 0 0 5.808 1.499h.001C18.625 23.878 24 18.506 24 11.879 24 5.374 18.626.001 12 .001zm0 21.808a9.873 9.873 0 0 1-5.03-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.855 9.855 0 0 1 2.124 12C2.124 6.523 6.523 2.124 12 2.124c5.479 0 9.878 4.399 9.878 9.878 0 5.476-4.399 9.806-9.879 9.806z"/></svg>
+  </a>
+
+  <script>
+    // DONNÉES FORMATIONS 
+    window.formationsData = [
+      {
+        id: 1, category: 'bureautique',
+        title: 'Pack Bureautique Complet',
+        public: 'Débutants & Cadres',
+        duration: '5 jours',
+        tarif: '75 000 FCFA',
+        objectifs: [
+          'Maîtriser Word, Excel et PowerPoint',
+          'Automatiser les tâches répétitives avec des macros',
+          'Collaborer efficacement avec les outils cloud',
+          'Produire des documents professionnels soignés'
+        ],
+        whatsappMsg: "Bonjour, je souhaite m'inscrire au Pack Bureautique Complet. Pouvez-vous me communiquer les prochaines dates disponibles ?"
+      },
+      {
+        id: 2, category: 'management',
+        title: 'Management & Leadership',
+        public: "Chefs d'équipe & Managers",
+        duration: '5 jours',
+        tarif: '120 000 FCFA',
+        objectifs: [
+          'Gérer les conflits et dynamiques d\'équipe',
+          'Motiver, déléguer et responsabiliser',
+          'Piloter la performance et les objectifs',
+          'Maîtriser la communication managériale'
+        ],
+        whatsappMsg: "Bonjour, je suis intéressé(e) par la formation Management & Leadership. Merci de me donner plus d'informations."
+      },
+      {
+        id: 3, category: 'digital',
+        title: 'Marketing Digital',
+        public: 'Entrepreneurs & Chargés de communication',
+        duration: '4 jours',
+        tarif: '90 000 FCFA',
+        objectifs: [
+          'Élaborer une stratégie de contenu efficace',
+          'Créer des campagnes publicitaires Meta & Google',
+          'Analyser les performances avec les outils analytics',
+          'Développer sa communauté en ligne'
+        ],
+        whatsappMsg: "Bonjour, je souhaite des informations sur la formation Marketing Digital."
+      },
+      {
+        id: 4, category: 'langues',
+        title: 'Anglais des Affaires',
+        public: 'Professionnels',
+        duration: '6 semaines',
+        tarif: '65 000 FCFA',
+        objectifs: [
+          'Conduire et participer à des réunions en anglais',
+          'Rédiger des emails et rapports professionnels',
+          'Maîtriser la négociation commerciale en anglais',
+          'Renforcer la confiance à l\'oral en contexte professionnel'
+        ],
+        whatsappMsg: "Bonjour, je voudrais m'inscrire à la formation Anglais des Affaires."
+      },
+      {
+        id: 5, category: 'bureautique',
+        title: 'Excel Avancé & Tableaux de Bord',
+        public: 'Comptables, Analystes, Gestionnaires',
+        duration: '3 jours',
+        tarif: '50 000 FCFA',
+        objectifs: [
+          'Maîtriser les formules avancées (INDEX, EQUIV, SI…)',
+          'Créer des tableaux croisés dynamiques puissants',
+          'Concevoir des tableaux de bord visuels',
+          'Automatiser les rapports avec des macros simples'
+        ],
+        whatsappMsg: "Bonjour, je suis intéressé(e) par la formation Excel Avancé & Tableaux de Bord."
+      },
+      {
+        id: 6, category: 'management',
+        title: 'Gestion de Projet Pratique',
+        public: 'Coordinateurs, Chefs de projet',
+        duration: '4 jours',
+        tarif: '95 000 FCFA',
+        objectifs: [
+          'Planifier et cadrer un projet de A à Z',
+          'Gérer les risques, délais et budgets',
+          'Animer une équipe projet multiculturelle',
+          'Utiliser les outils de suivi (Gantt, Trello, etc.)'
+        ],
+        whatsappMsg: "Bonjour, je voudrais des informations sur la formation Gestion de Projet Pratique."
+      }
+    ];
+
+    // SVG 
+    const clockSvg = '<svg class="icon" viewBox="0 0 24 24" width="1.1em" height="1.1em" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
+    const peopleSvg = '<svg class="icon" viewBox="0 0 24 24" width="1.1em" height="1.1em" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>';
+
+    // Render catalogue
+    function renderCatalog(filter) {
+      const grid = document.getElementById('catalog-grid');
+      const emptyMsg = document.getElementById('empty-msg');
+      const filtered = filter === 'all' ? window.formationsData : window.formationsData.filter(f => f.category === filter);
+
+      grid.innerHTML = '';
+      if (filtered.length === 0) {
+        emptyMsg.style.display = 'block';
+        return;
+      }
+      emptyMsg.style.display = 'none';
+
+      filtered.forEach((f, i) => {
+        const card = document.createElement('article');
+        card.className = 'card';
+        card.style.cssText = `animation-delay:${i * 0.08}s`;
+        card.innerHTML = `
+          <span class="card-tag">${f.category.charAt(0).toUpperCase() + f.category.slice(1)}</span>
+          <h3>${f.title}</h3>
+          <p>${f.objectifs[0]}</p>
+          <div style="display:flex;align-items:center;gap:16px;margin:16px 0;padding:14px 16px;background:var(--cream);border-radius:10px;font-size:0.85rem">
+            <span style="display:inline-flex;align-items:center;gap:6px;">${clockSvg} <strong>${f.duration}</strong></span>
+            <span style="display:inline-flex;align-items:center;gap:6px;">${peopleSvg} ${f.public.split('&')[0].trim()}</span>
+            <span style="margin-left:auto;font-weight:700;color:var(--gold)">${f.tarif}</span>
+          </div>
+          <button class="btn btn-outline btn-sm" style="width:100%;justify-content:center" onclick="openModal(${f.id})">
+            Voir les détails
+          </button>
+        `;
+        grid.appendChild(card);
+      });
+      // déclenchement animation
+      document.dispatchEvent(new Event('animationTrigger'));
+    }
+
+    // Fonctions du modal (ajoutées pour que l'interactivité soit complète, sans altérer les emojis)
+    function openModal(id) {
+      const formation = window.formationsData.find(f => f.id === id);
+      if (!formation) return;
+      const modal = document.getElementById('modal');
+      const modalBody = document.getElementById('modal-body');
+      const modalCta = document.getElementById('modal-cta');
+      
+      // Construction du contenu avec SVG pour les détails également (pas d'emoji)
+      const objectivesList = formation.objectifs.map(obj => `<li>${obj}</li>`).join('');
+      modalBody.innerHTML = `
+        <h2 id="modal-title" style="font-family:'Playfair Display'; margin-bottom:12px;">${formation.title}</h2>
+        <div style="background:#F9F6F0; padding:16px; border-radius:20px; margin:20px 0;">
+          <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between;">
+            <span style="display:inline-flex;align-items:center;gap:6px;">${clockSvg} <strong>Durée :</strong> ${formation.duration}</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;">${peopleSvg} <strong>Public :</strong> ${formation.public}</span>
+            <span><strong>Tarif :</strong> ${formation.tarif}</span>
+          </div>
+        </div>
+        <h3 style="margin-top:8px;">📌 Objectifs pédagogiques</h3>
+        <ul style="margin:16px 0 0 24px; display:flex; flex-direction:column; gap:8px;">
+          ${objectivesList}
+        </ul>
+      `;
+      const waMsg = encodeURIComponent(formation.whatsappMsg);
+      modalCta.href = `https://wa.me/22394510972?text=${waMsg}`;
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.style.display = 'none';
+    }
+
+    // Gestion des filtres
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        renderCatalog(this.dataset.filter);
+      });
+    });
+
+    // Fermeture modale au clic sur overlay ou croix
+    window.closeModal = closeModal;
+    window.openModal = openModal;
+    document.querySelector('.close-modal').addEventListener('click', closeModal);
+    window.addEventListener('click', (e) => {
+      const modal = document.getElementById('modal');
+      if (e.target === modal) closeModal();
+    });
+
+    // Initialisation
+    renderCatalog('all');
+
+    // Mobile nav toggle (optionnel mais gardé)
+    const navToggle = document.querySelector('.nav-toggle');
+    const navList = document.querySelector('.nav-list');
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        navList.classList.toggle('active');
+        const expanded = navList.classList.contains('active');
+        navToggle.setAttribute('aria-expanded', expanded);
+      });
+    }
+  </script>
+</body>
+</html>

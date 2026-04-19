@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Dolo Multi Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-flex">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </span>
+        Dolo <span>Multi</span> Services
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <ul class="nav-list">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="formations.html">Formations</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li><a href="catalogue.html" class="nav-cta">Catalogue →</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-breadcrumb">
+          <a href="index.html">Accueil</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          Contact
+        </div>
+        <h1><em style="font-style:italic;color:#E2B55C">Contactez</em>-nous</h1>
+        <p>Une question sur nos formations, un besoin de devis ou une demande d'information ? Notre équipe vous répond sous 24 à 48 heures.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- FORM -->
+          <div class="form-wrapper">
+            <div style="margin-bottom:28px">
+              <span class="section-label">Formulaire de contact</span>
+              <h2 class="section-title" style="font-size:1.7rem">Envoyez-nous un <em>message</em></h2>
+            </div>
+            <form class="form" action="https://formspree.io/f/votre-id" method="POST" id="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="prenom">Prénom *</label>
+                  <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+                </div>
+                <div class="form-group">
+                  <label for="nom">Nom *</label>
+                  <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Adresse email *</label>
+                <input type="email" id="email" name="email" placeholder="exemple@email.com" required>
+              </div>
+              <div class="form-group">
+                <label for="telephone">Téléphone (WhatsApp de préférence)</label>
+                <input type="tel" id="telephone" name="telephone" placeholder="22394510972">
+              </div>
+              <div class="form-group">
+                <label for="sujet">Sujet de votre demande *</label>
+                <select id="sujet" name="sujet" required>
+                  <option value="">— Sélectionnez un sujet —</option>
+                  <option value="formation-individuelle">Inscription à une formation</option>
+                  <option value="formation-entreprise">Formation intra-entreprise</option>
+                  <option value="devis">Demande de devis</option>
+                  <option value="programme">Information sur un programme</option>
+                  <option value="autre">Autre demande</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Votre message *</label>
+                <textarea id="message" name="message" rows="5" placeholder="Décrivez votre besoin, le programme qui vous intéresse et vos disponibilités..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-navy" style="width:100%;justify-content:center;padding:16px">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Envoyer ma demande
+              </button>
+              <p style="font-size:0.8rem;text-align:center;color:var(--text-light);margin-bottom:0">Réponse garantie sous 24-48h ouvrables</p>
+            </form>
+          </div>
+
+          <!-- SIDEBAR -->
+          <div class="contact-sidebar">
+
+            <div class="info-card">
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Coordonnées
+              </h3>
+              <div class="info-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div>
+                  <strong>Siège social</strong>
+                  <p>Bamako, Mali<br>ACI 2000 — Hamdallaye</p>
+                </div>
+              </div>
+              <div class="info-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+                <div>
+                  <strong>Téléphone & WhatsApp</strong>
+                  <p><a href="tel:+22394510972">+22394510972</a></p>
+                </div>
+              </div>
+              <div class="info-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <div>
+                  <strong>Email</strong>
+                  <p><a href="mailto:contact@dolomultiservices.com">contact@dolomultiservices.com</a></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Horaires d'ouverture
+              </h3>
+              <div class="hours-grid">
+                <div class="hours-row">
+                  <span class="day">Lundi — Vendredi</span>
+                  <span class="time">8h00 – 18h00</span>
+                </div>
+                <div class="hours-row">
+                  <span class="day">Samedi</span>
+                  <span class="time">9h00 – 13h00</span>
+                </div>
+                <div class="hours-row">
+                  <span class="day">Dimanche</span>
+                  <span class="time" style="color:var(--text-light)">Fermé</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-card" style="background:linear-gradient(135deg,var(--navy),var(--navy-mid));color:var(--white);border:none">
+              <h3 style="color:var(--white)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#C4973A" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Réponse rapide via WhatsApp
+              </h3>
+              <p style="color:rgba(255,255,255,0.7);font-size:0.88rem;margin-bottom:16px">Pour une réponse encore plus rapide, contactez-nous directement sur WhatsApp.</p>
+              <a href="https://wa.me/22394510972" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener" style="width:100%;justify-content:center">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 0C5.373 0 .001 5.372.001 11.999c0 2.117.554 4.17 1.606 5.974L.012 24l6.179-1.621a11.956 11.956 0 0 0 5.808 1.499h.001C18.625 23.878 24 18.506 24 11.879 24 5.374 18.626.001 12 .001zm0 21.808a9.873 9.873 0 0 1-5.03-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.855 9.855 0 0 1 2.124 12C2.124 6.523 6.523 2.124 12 2.124c5.479 0 9.878 4.399 9.878 9.878 0 5.476-4.399 9.806-9.879 9.806z"/></svg>
+                Écrire sur WhatsApp
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+            Dolo Multi Services
+          </a>
+          <p>Formation professionnelle certifiante à Bamako, Mali.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="formations.html">Formations</a></li>
+            <li><a href="catalogue.html">Catalogue</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Nous joindre</h4>
+          <ul class="footer-links-list">
+            <li><a href="tel:+22394510972">+22394510972</a></li>
+            <li><a href="mailto:contact@dolomultiservices.com">contact@dolomultiservices.com</a></li>
+            <li>Bamako, Mali</li>
+            <li>Lun – Ven : 8h – 18h</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Dolo Multi Services. Tous droits réservés.</p>
+        <div class="footer-legal">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="confidentialite.html">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/22394510972" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 0C5.373 0 .001 5.372.001 11.999c0 2.117.554 4.17 1.606 5.974L.012 24l6.179-1.621a11.956 11.956 0 0 0 5.808 1.499h.001C18.625 23.878 24 18.506 24 11.879 24 5.374 18.626.001 12 .001zm0 21.808a9.873 9.873 0 0 1-5.03-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.855 9.855 0 0 1 2.124 12C2.124 6.523 6.523 2.124 12 2.124c5.479 0 9.878 4.399 9.878 9.878 0 5.476-4.399 9.806-9.879 9.806z"/></svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
